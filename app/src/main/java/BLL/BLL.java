@@ -5,26 +5,65 @@ import android.graphics.Point;
 import android.util.Size;
 import android.view.Display;
 import android.view.WindowManager;
-
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 import Entity.DotEntity;
 import Entity.TextureEntity;
 
-/**
- * Created by Wayha on 07.11.2017.
- */
-
 public class BLL
 {
+    private DotEntity DotObj = new DotEntity();
+    private ArrayList<TextureEntity> ArrTextureObjs = new ArrayList<TextureEntity>();
+//    private TextureEntity TextureObj = new TextureEntity();
+    private Display display;
     public BLL(Display display)
     {
-        DotEntity DotObj = new DotEntity();
-        DotObj.SetDotObj(display);
-        TextureEntity TextureObj = new TextureEntity();
-        TextureObj.SetTextureObj(display);
+          this.display=display;
+          DotObj.SetDotObj(display);
+//        TextureObj.SetTextureObj(display);
+    }
 
-        while(1!=2)
+    public void startGame()
+    {
+        int id=0;
+        while (this.DotObj.getStateLife()=="Live")
+        {
+             if(ArrTextureObjs.isEmpty())
+             {
+                 id++;
+                 TextureEntity TextureObj = new TextureEntity(id);
+                 TextureObj.SetTextureObj(display);
+                 ArrTextureObjs.add(TextureObj);
+             }
+
+            for (TextureEntity obj: ArrTextureObjs)
+            {
+
+             if(obj.getX()<=0)
+             {
+                 id++;
+                 TextureEntity TextureObj = new TextureEntity(id);
+                 TextureObj.SetTextureObj(display);
+                 ArrTextureObjs.add(TextureObj);
+                 ArrTextureObjs.remove(obj);
+             }
+
+             if(ArrTextureObjs.get(ArrTextureObjs.size()).getX()<ArrTextureObjs.get(ArrTextureObjs.size()).getSizeX()/2) // I know what is very bad...
+             {
+                 id++;
+                 TextureEntity TextureObj = new TextureEntity(id);
+                 TextureObj.SetTextureObj(display);
+                 ArrTextureObjs.add(TextureObj);
+             }
+             obj.moveTextureObj();
+            }
+
+        }
+
+        if(this.DotObj.getStateLife()=="Dead")
         {
 
         }

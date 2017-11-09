@@ -14,10 +14,11 @@ public class DotEntity {
     private int sizeX;
     private int sizeY;
     private String stateMove; // Last moving state up or down
+    private String stateLife ; // Live or dead
 
     public  DotEntity()
     {
-
+        this.stateLife="Live";
     }
 
     public int getX() {
@@ -59,6 +60,14 @@ public class DotEntity {
 
     public void setStateMove(String state) {
         this.stateMove = state;
+    }
+
+    public String getStateLife() {
+        return this.stateLife;
+    }
+
+    public void setStateLife(String state) {
+        this.stateLife = state;
     }
 
     private Point getSize (Display display)

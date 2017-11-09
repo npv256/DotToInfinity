@@ -13,9 +13,9 @@ public class TextureEntity {
     private int sizeY;
     private int id=1;
 
-    public TextureEntity()
+    public TextureEntity(int id)
     {
-
+        this.id=id;
     }
 
     public int getId() {
@@ -82,4 +82,6 @@ public class TextureEntity {
         int step = 7;
         this.setX(this.getX()+step);
     }
+
+
 }
