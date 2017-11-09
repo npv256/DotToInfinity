@@ -79,7 +79,7 @@ public class TextureEntity {
 
     public void moveTextureObj()
     {
-        int step = 6;
+        int step = 7;
         this.setX(this.getX()+step);
     }
 }
