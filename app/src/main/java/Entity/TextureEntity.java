@@ -5,9 +5,6 @@ import android.view.Display;
 
 import java.util.Random;
 
-/**
- * Created by Wayha on 09.11.2017.
- */
 
 public class TextureEntity {
     private int x;// координата X
@@ -82,7 +79,7 @@ public class TextureEntity {
 
     public void moveTextureObj()
     {
-        int step = 5;
+        int step = 6;
         this.setX(this.getX()+step);
     }
 }
